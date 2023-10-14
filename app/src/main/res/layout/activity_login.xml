@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".login.LoginActivity">
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:src="@drawable/instagram_logo_black"
+        android:contentDescription="@null"
+        android:layout_marginTop="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edt_layout_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        style="@style/Base.Theme.InstaApp.FormEditTextInput"
+        app:layout_constraintTop_toBottomOf="@id/img_logo"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_email"
+            style="@style/Base.Theme.InstaApp.FormEditText"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:autofillHints="@null" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edt_layout_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        style="@style/Base.Theme.InstaApp.FormEditTextInput"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/edt_layout_email"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_password"
+            style="@style/Base.Theme.InstaApp.FormEditText"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:autofillHints="@null"
+             />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.example.instaapp.LoadingButton
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:text="@string/enter"
+        android:layout_marginTop="24dp"
+        android:enabled="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_layout_password"/>
+
+    <FrameLayout
+        style="@style/Base.Theme.InstaApp.FormContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_login">
+
+        <View
+            android:background="@color/gray_dark"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center_vertical"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/or"
+            android:padding="5dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/white"
+            android:textColor="@color/gray_text"/>
+
+    </FrameLayout>
+
+    <View
+        android:background="@color/gray_dark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@id/txt_create_account"
+        />
+
+    <TextView
+        android:id="@+id/txt_create_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/gray_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/does_not_have_account" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
