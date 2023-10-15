@@ -10,8 +10,8 @@
         android:id="@+id/register_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_register_email"
-        android:name="com.example.instaapp.register.RegisterNamePasswordFragment"
+        tools:layout="@layout/fragment_register_welcome"
+        android:name="com.example.instaapp.register.RegisterWelcomeFragment"
         />
 
 </LinearLayout>
