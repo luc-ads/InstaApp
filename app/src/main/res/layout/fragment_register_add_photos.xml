@@ -48,10 +48,23 @@
         android:id="@+id/btn_next_step"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:text="@string/next"
+        app:text="@string/add_photo"
         android:layout_marginTop="24dp"
         android:enabled="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_subtitle_add_photo"/>
+
+    <TextView
+        android:id="@+id/link_jump"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        style="@style/Base.Theme.InstaApp.SubTitle"
+        android:text="@string/jump"
+        android:gravity="center_horizontal"
+        android:textColor="@color/blue_enabled"
+        app:layout_constraintTop_toBottomOf="@id/btn_next_step"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
