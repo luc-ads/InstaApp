@@ -16,16 +16,16 @@
         android:text="@string/welcome_to_instagram"
         android:lineSpacingExtra="2dp"
         style="@style/Base.Theme.InstaApp.TextView"
-        android:gravity="start"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <com.example.instaapp.LoadingButton
-        android:id="@+id/btn_next_step"
+        android:id="@+id/btn_finish_welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:enabled="false"
+        android:enabled="true"
         android:layout_marginTop="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_welcome_insta"
