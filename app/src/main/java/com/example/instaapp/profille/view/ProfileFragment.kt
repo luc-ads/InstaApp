@@ -1,6 +1,7 @@
 package com.example.instaapp.profille.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,13 +42,14 @@ class ProfileFragment: Fragment() {
             return PostViewHolder(binding)
         }
 
-        override fun getItemCount(): Int = 20
+        override fun getItemCount(): Int = 21
 
         override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
             holder.bind(R.drawable.ic_insta_add)
+            Log.i("onBindCall", "Passou pelo onBind")
         }
 
-        private class PostViewHolder(var itemBinding:ItemProfileGridBinding): RecyclerView.ViewHolder(itemBinding.root) {
+        private class PostViewHolder(var itemBinding: ItemProfileGridBinding): RecyclerView.ViewHolder(itemBinding.root) {
             fun bind(image: Int) {
                 itemBinding.itemProfileImgGrid.setImageResource(image)
             }

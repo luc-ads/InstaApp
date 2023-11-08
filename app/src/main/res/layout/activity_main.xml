@@ -6,14 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <fragment
-        android:id="@+id/fragment_profile"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:name="com.example.instaapp.profille.view.ProfileFragment"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/profile_fragment"
-        app:layout_constraintBottom_toTopOf="@id/main_bottom_nav"/>
+        app:layout_constraintBottom_toTopOf="@id/main_bottom_nav">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="@string/app_name"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <fragment
+            android:id="@+id/fragment_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:name="com.example.instaapp.profille.view.ProfileFragment"
+            tools:layout="@layout/profile_fragment"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_bottom_nav"
