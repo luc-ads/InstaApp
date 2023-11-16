@@ -3,6 +3,8 @@ package com.example.instaapp.profille.view
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -25,6 +27,16 @@ class ProfileFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         configRv(view)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_profiile, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     private fun configRv(view: View) {

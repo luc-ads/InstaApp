@@ -22,10 +22,15 @@ class MainActivity : AppCompatActivity() {
             WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
             WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
         )
-
         window.statusBarColor = ContextCompat.getColor(
             this,
             R.color.gray
         )
+
+        setSupportActionBar(binding.mainToolbar)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_insta_camera)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = ""
+
     }
 }
