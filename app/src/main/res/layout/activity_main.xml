@@ -38,8 +38,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:name="com.example.instaapp.main.FeedFragment"
-            tools:layout="@layout/feed_fragment"/>
+            android:name="com.example.instaapp.search.SearchFragment"
+            tools:layout="@layout/search_fragment"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
