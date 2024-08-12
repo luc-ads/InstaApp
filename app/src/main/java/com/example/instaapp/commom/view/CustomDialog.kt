@@ -1,8 +1,7 @@
-package com.example.instaapp.commom
+package com.example.instaapp.commom.view
 
 import android.app.Dialog
 import android.content.Context
-import android.media.MediaCodec.LinearBlock
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout

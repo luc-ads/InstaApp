@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.instaapp.R
-import com.example.instaapp.commom.CustomDialog
+import com.example.instaapp.commom.view.CustomDialog
 
 
 class RegisterAddPhotosFragment: Fragment() {
