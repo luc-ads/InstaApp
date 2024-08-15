@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.instaapp.MainActivity
 import com.example.instaapp.commom.util.TxtWatcher
 import com.example.instaapp.databinding.ActivityLoginBinding
 import com.example.instaapp.login.LoginInterface
@@ -75,10 +77,10 @@ class LoginActivity : AppCompatActivity(), LoginInterface.View {
     }
 
     override fun onUserAuthenticated() {
-        // Go to Home Screen (Feed)
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     override fun onUserUnauthorized(message: String) {
-        // Show Alert Error
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 }
