@@ -14,6 +14,11 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val fragment = RegisterEmailFragment()
 
+        supportFragmentManager.beginTransaction().apply {
+            add(R.id.register_fragment, fragment)
+            commit()
+        }
     }
 }

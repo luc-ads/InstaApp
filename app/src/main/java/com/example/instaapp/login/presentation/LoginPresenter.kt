@@ -10,7 +10,7 @@ import com.example.instaapp.login.data.LoginRepository
 class LoginPresenter(
     private var view: LoginInterface.View?,
     private val repository: LoginRepository
-): LoginInterface.Presenter {
+) : LoginInterface.Presenter {
     override fun login(email: String, password: String) {
 
         val isEmailValid = Patterns.EMAIL_ADDRESS.matcher(email).matches()

@@ -32,12 +32,11 @@ class LoginActivity : AppCompatActivity(), LoginInterface.View {
 
     private fun initValues() {
 
-//        val repository = LoginRepository(FakeDataSource())
         presenter = LoginPresenter(this, DependencyInjector.loginRepository())
 
         with(binding) {
             edtEmail.addTextChangedListener(watcher)
-            edtEmail.addTextChangedListener(TxtWatcher{
+            edtEmail.addTextChangedListener(TxtWatcher {
                 displayEmailFailure(null)
             })
             edtPassword.addTextChangedListener(watcher)
@@ -57,12 +56,6 @@ class LoginActivity : AppCompatActivity(), LoginInterface.View {
     override fun onDestroy() {
         presenter.onDestroy()
         super.onDestroy()
-    }
-
-    private val watcher = TxtWatcher {
-        binding.btnLogin.isEnabled =
-            binding.edtEmail.text.toString().isNotEmpty() &&
-                    binding.edtPassword.text.toString().isNotEmpty()
     }
 
     override fun showProgress(enabled: Boolean) {
@@ -85,5 +78,11 @@ class LoginActivity : AppCompatActivity(), LoginInterface.View {
 
     override fun onUserUnauthorized(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
+    private val watcher = TxtWatcher {
+        binding.btnLogin.isEnabled =
+            binding.edtEmail.text.toString().isNotEmpty() &&
+                    binding.edtPassword.text.toString().isNotEmpty()
     }
 }
