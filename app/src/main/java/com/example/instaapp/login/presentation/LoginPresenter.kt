@@ -2,6 +2,7 @@ package com.example.instaapp.login.presentation
 
 import android.util.Patterns
 import com.example.instaapp.R
+import com.example.instaapp.commom.model.UserAuth
 import com.example.instaapp.login.LoginInterface
 import com.example.instaapp.login.data.LoginCallBack
 import com.example.instaapp.login.data.LoginRepository
@@ -30,7 +31,7 @@ class LoginPresenter(
         if (isEmailValid && isPasswordValid) {
             view?.showProgress(true)
             repository.login(email, password, object : LoginCallBack {
-                override fun onSucess() {
+                override fun onSucess(userAuth: UserAuth) {
                     view?.onUserAuthenticated()
                 }
 
