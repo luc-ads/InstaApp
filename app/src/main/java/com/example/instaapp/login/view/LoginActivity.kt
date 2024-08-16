@@ -7,9 +7,12 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instaapp.MainActivity
+import com.example.instaapp.commom.base.DependencyInjector
 import com.example.instaapp.commom.util.TxtWatcher
 import com.example.instaapp.databinding.ActivityLoginBinding
 import com.example.instaapp.login.LoginInterface
+import com.example.instaapp.login.data.FakeDataSource
+import com.example.instaapp.login.data.LoginRepository
 import com.example.instaapp.login.presentation.LoginPresenter
 import com.example.instaapp.register.RegisterActivity
 
@@ -29,7 +32,8 @@ class LoginActivity : AppCompatActivity(), LoginInterface.View {
 
     private fun initValues() {
 
-        presenter = LoginPresenter(this)
+//        val repository = LoginRepository(FakeDataSource())
+        presenter = LoginPresenter(this, DependencyInjector.loginRepository())
 
         with(binding) {
             edtEmail.addTextChangedListener(watcher)
@@ -41,10 +45,7 @@ class LoginActivity : AppCompatActivity(), LoginInterface.View {
                 displayPasswordFailure(null)
             })
             btnLogin.setOnClickListener {
-
                 presenter.login(edtEmail.text.toString(), edtPassword.text.toString())
-
-
             }
 
             txtCreateAccount.setOnClickListener {
@@ -65,7 +66,7 @@ class LoginActivity : AppCompatActivity(), LoginInterface.View {
     }
 
     override fun showProgress(enabled: Boolean) {
-        binding.btnLogin.showProgress(true)
+        binding.btnLogin.showProgress(enabled)
     }
 
     override fun displayEmailFailure(emailError: Int?) {
@@ -77,7 +78,9 @@ class LoginActivity : AppCompatActivity(), LoginInterface.View {
     }
 
     override fun onUserAuthenticated() {
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        })
     }
 
     override fun onUserUnauthorized(message: String) {
