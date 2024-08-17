@@ -24,7 +24,7 @@
             android:exported="true" >
         </activity>
         <activity
-            android:name=".register.RegisterActivity"
+            android:name=".register.view.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".login.view.LoginActivity"

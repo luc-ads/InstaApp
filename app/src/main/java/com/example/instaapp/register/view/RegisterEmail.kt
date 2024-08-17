@@ -1,4 +1,4 @@
-package com.example.instaapp.register
+package com.example.instaapp.register.view
 
 import androidx.annotation.StringRes
 import com.example.instaapp.commom.base.BasePresenter
@@ -11,6 +11,9 @@ interface RegisterEmail {
     }
 
     interface View: BaseView<Presenter> {
+        fun showProgress(enabled: Boolean)
         fun displayEmailFailure(@StringRes emailError: Int?)
+        fun onEmailFailure(message: String)
+        fun goToNameAndPasswordScreen(email: String)
     }
 }

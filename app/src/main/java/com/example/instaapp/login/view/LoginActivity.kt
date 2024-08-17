@@ -2,8 +2,6 @@ package com.example.instaapp.login.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.instaapp.MainActivity
@@ -11,10 +9,8 @@ import com.example.instaapp.commom.base.DependencyInjector
 import com.example.instaapp.commom.util.TxtWatcher
 import com.example.instaapp.databinding.ActivityLoginBinding
 import com.example.instaapp.login.LoginInterface
-import com.example.instaapp.login.data.FakeDataSource
-import com.example.instaapp.login.data.LoginRepository
 import com.example.instaapp.login.presentation.LoginPresenter
-import com.example.instaapp.register.RegisterActivity
+import com.example.instaapp.register.view.RegisterActivity
 
 
 class LoginActivity : AppCompatActivity(), LoginInterface.View {

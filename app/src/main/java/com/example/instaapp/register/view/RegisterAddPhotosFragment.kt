@@ -1,4 +1,4 @@
-package com.example.instaapp.register
+package com.example.instaapp.register.view
 
 import android.content.Intent
 import android.os.Bundle

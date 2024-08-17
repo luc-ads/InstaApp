@@ -1,4 +1,4 @@
-package com.example.instaapp.register
+package com.example.instaapp.register.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

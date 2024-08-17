@@ -1,13 +1,13 @@
-package com.example.instaapp.register
+package com.example.instaapp.register.view
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.instaapp.R
+import com.example.instaapp.commom.base.DependencyInjector
 import com.example.instaapp.commom.util.TxtWatcher
 import com.example.instaapp.databinding.FragmentRegisterEmailBinding
+import com.example.instaapp.register.presentation.RegisterEmailPresenter
 
 class RegisterEmailFragment: Fragment(R.layout.fragment_register_email), RegisterEmail.View {
 
@@ -19,6 +19,8 @@ class RegisterEmailFragment: Fragment(R.layout.fragment_register_email), Registe
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRegisterEmailBinding.bind(view)
+
+        presenter = RegisterEmailPresenter(this, DependencyInjector.registerEmailRepository())
 
         binding?.let {
             with(it) {
@@ -38,13 +40,25 @@ class RegisterEmailFragment: Fragment(R.layout.fragment_register_email), Registe
         }
     }
 
-    override fun displayEmailFailure(emailError: Int?) {
+    override fun showProgress(enabled: Boolean) {
+        binding?.btnNextStep?.showProgress(enabled)
+    }
 
+    override fun displayEmailFailure(emailError: Int?) {
+        binding?.edtEmail?.error = emailError?.let { getString(it) }
+    }
+
+    override fun onEmailFailure(message: String) {
+        binding?.edtEmail?.error = message
+    }
+
+    override fun goToNameAndPasswordScreen(email: String) {
+        TODO("Not yet implemented")
     }
 
     override fun onDestroy() {
         binding = null
-//        presenter.onDestroy()
+        presenter.onDestroy()
         super.onDestroy()
     }
 
