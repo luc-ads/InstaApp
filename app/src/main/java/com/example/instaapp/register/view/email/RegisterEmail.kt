@@ -1,4 +1,4 @@
-package com.example.instaapp.register.view
+package com.example.instaapp.register.view.email
 
 import androidx.annotation.StringRes
 import com.example.instaapp.commom.base.BasePresenter

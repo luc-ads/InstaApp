@@ -2,7 +2,8 @@ package com.example.instaapp.register.data
 
 import android.os.Looper
 import com.example.instaapp.commom.model.Database
-import java.util.logging.Handler
+import com.example.instaapp.register.data.email.RegisterEmailCallBack
+import com.example.instaapp.register.data.email.RegisterEmailDataSource
 
 class FakeRegisterDataSource : RegisterEmailDataSource {
     override fun create(email: String, callBack: RegisterEmailCallBack) {

@@ -1,6 +1,4 @@
-package com.example.instaapp.register.data
-
-import com.example.instaapp.commom.model.UserAuth
+package com.example.instaapp.register.data.email
 
 interface RegisterEmailCallBack {
     fun onSucess()

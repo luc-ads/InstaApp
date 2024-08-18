@@ -1,5 +1,6 @@
-package com.example.instaapp.register.view
+package com.example.instaapp.register.view.email
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -8,10 +9,12 @@ import com.example.instaapp.commom.base.DependencyInjector
 import com.example.instaapp.commom.util.TxtWatcher
 import com.example.instaapp.databinding.FragmentRegisterEmailBinding
 import com.example.instaapp.register.presentation.RegisterEmailPresenter
+import com.example.instaapp.register.view.FragmentAttachListener
 
 class RegisterEmailFragment: Fragment(R.layout.fragment_register_email), RegisterEmail.View {
 
     private var binding: FragmentRegisterEmailBinding? = null
+    private var fragmentAttachListener: FragmentAttachListener? = null
 
     override lateinit var presenter: RegisterEmail.Presenter
 
@@ -40,6 +43,13 @@ class RegisterEmailFragment: Fragment(R.layout.fragment_register_email), Registe
         }
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is FragmentAttachListener) {
+            fragmentAttachListener = context
+        }
+    }
+
     override fun showProgress(enabled: Boolean) {
         binding?.btnNextStep?.showProgress(enabled)
     }
@@ -53,11 +63,12 @@ class RegisterEmailFragment: Fragment(R.layout.fragment_register_email), Registe
     }
 
     override fun goToNameAndPasswordScreen(email: String) {
-        TODO("Not yet implemented")
+        fragmentAttachListener?.goToNameAndPasswordScreen(email)
     }
 
     override fun onDestroy() {
         binding = null
+        fragmentAttachListener = null
         presenter.onDestroy()
         super.onDestroy()
     }
