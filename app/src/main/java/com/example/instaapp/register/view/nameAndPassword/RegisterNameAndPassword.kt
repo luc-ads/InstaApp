@@ -7,7 +7,7 @@ import com.example.instaapp.commom.base.BaseView
 interface RegisterNameAndPassword {
 
     interface Presenter: BasePresenter {
-        fun create(name: String, password: String, confirm: String)
+        fun create(email: String, name: String, password: String, confirm: String)
     }
 
     interface View: BaseView<Presenter> {

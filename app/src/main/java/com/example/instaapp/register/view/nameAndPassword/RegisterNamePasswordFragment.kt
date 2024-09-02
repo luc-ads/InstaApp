@@ -18,7 +18,7 @@ class RegisterNamePasswordFragment: Fragment(R.layout.fragment_register_name_pas
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRegisterNamePasswordBinding.bind(view)
 
-        val email = arguments?.getString(KEY_EMAIL)
+        val email = arguments?.getString(KEY_EMAIL) ?: throw IllegalArgumentException("Email not found")
 
         binding?.let {
             addTextWatchers()
@@ -28,7 +28,7 @@ class RegisterNamePasswordFragment: Fragment(R.layout.fragment_register_name_pas
                     activity?.finish()
                 }
                 btnNextStepNamePassword.setOnClickListener {
-                    presenter.create(edtName.text.toString(), edtPassword.text.toString(), edtPasswordConfirm.text.toString())
+                    presenter.create(email, edtName.text.toString(), edtPassword.text.toString(), edtPasswordConfirm.text.toString())
                 }
             }
         }

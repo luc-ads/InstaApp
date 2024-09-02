@@ -9,9 +9,10 @@ class RegisterNameAndPasswordPresenter(
     private val repository: RegisterNameAndPasswordRepository
 ): RegisterNameAndPassword.Presenter {
 
-    override fun create(name: String, password: String, confirm: String) {
+    override fun create(email: String, name: String, password: String, confirm: String) {
 
         var isNameAndPassword = true
+
         if (isNameAndPassword) {
             view?.showProgress(true)
 
