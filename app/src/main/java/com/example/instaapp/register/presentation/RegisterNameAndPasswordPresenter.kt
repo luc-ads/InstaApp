@@ -50,27 +50,9 @@ class RegisterNameAndPasswordPresenter(
                 }
             })
         }
-//
-//            repository.create(name, password, object : RegisterNameAndPasswordCallBack {
-//                override fun onSucess() {
-//                    view?.onCreateSuccess(name)
-//                }
-//
-//                override fun onFailure(message: String) {
-//                    view?.onCreateFailure(message)
-//                }
-//
-//                override fun onComplete() {
-//                    view?.showProgress(false)
-//                }
-//            })
-//        } else {
-//
-//        }
     }
 
     override fun onDestroy() {
         view = null
     }
-
 }

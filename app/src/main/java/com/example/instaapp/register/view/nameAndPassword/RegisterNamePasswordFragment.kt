@@ -1,5 +1,6 @@
 package com.example.instaapp.register.view.nameAndPassword
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -9,10 +10,12 @@ import com.example.instaapp.commom.base.DependencyInjector
 import com.example.instaapp.commom.util.TxtWatcher
 import com.example.instaapp.databinding.FragmentRegisterNamePasswordBinding
 import com.example.instaapp.register.presentation.RegisterNameAndPasswordPresenter
+import com.example.instaapp.register.view.FragmentAttachListener
 
 class RegisterNamePasswordFragment: Fragment(R.layout.fragment_register_name_password), RegisterNameAndPassword.View {
 
     private var binding: FragmentRegisterNamePasswordBinding? = null
+    private var fragmentAttachListener: FragmentAttachListener? = null
 
     override lateinit var presenter: RegisterNameAndPassword.Presenter
 
@@ -57,6 +60,13 @@ class RegisterNamePasswordFragment: Fragment(R.layout.fragment_register_name_pas
         }
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is FragmentAttachListener) {
+            fragmentAttachListener = context
+        }
+    }
+
     override fun onDestroy() {
         binding = null
         super.onDestroy()
@@ -74,21 +84,12 @@ class RegisterNamePasswordFragment: Fragment(R.layout.fragment_register_name_pas
         binding?.edtPassword?.error = passwordError?.let { getString(it) }
     }
 
-//    override fun displayNameAndPasswordFailure(nameError: Int?, passwordError: Int?) {
-//        if (nameError != null) {
-//            binding?.edtName?.error = getString(nameError)
-//        }
-//        if (passwordError != null) {
-//            binding?.edtPassword?.error = getString(passwordError)
-//        }
-//    }
-
     override fun onCreateFailure(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
     }
 
     override fun onCreateSuccess(name: String) {
-
+        fragmentAttachListener?.goToWelcomeScreen(name)
     }
 
     private val watcher = TxtWatcher {
