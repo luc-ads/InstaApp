@@ -16,6 +16,5 @@ interface RegisterNameAndPassword {
         fun displayPasswordFailure(@StringRes passwordError: Int?)
         fun onCreateFailure(message: String)
         fun onCreateSuccess(name: String)
-        fun passwordDivergent(@StringRes confirmPasswordError: Int?)
     }
 }

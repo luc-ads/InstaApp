@@ -5,8 +5,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.instaapp.R
+import com.example.instaapp.commom.base.DependencyInjector
 import com.example.instaapp.commom.util.TxtWatcher
 import com.example.instaapp.databinding.FragmentRegisterNamePasswordBinding
+import com.example.instaapp.register.presentation.RegisterNameAndPasswordPresenter
 
 class RegisterNamePasswordFragment: Fragment(R.layout.fragment_register_name_password), RegisterNameAndPassword.View {
 
@@ -18,6 +20,8 @@ class RegisterNamePasswordFragment: Fragment(R.layout.fragment_register_name_pas
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRegisterNamePasswordBinding.bind(view)
 
+        val repository = DependencyInjector.registerEmailRepository()
+        val presenter = RegisterNameAndPasswordPresenter(this, repository)
         val email = arguments?.getString(KEY_EMAIL) ?: throw IllegalArgumentException("Email not found")
 
         binding?.let {
@@ -55,7 +59,6 @@ class RegisterNamePasswordFragment: Fragment(R.layout.fragment_register_name_pas
 
     override fun onDestroy() {
         binding = null
-        presenter.onDestroy()
         super.onDestroy()
     }
 
@@ -85,12 +88,7 @@ class RegisterNamePasswordFragment: Fragment(R.layout.fragment_register_name_pas
     }
 
     override fun onCreateSuccess(name: String) {
-        TODO("Not yet implemented")
-    }
 
-    override fun passwordDivergent(confirmPasswordError: Int?) {
-        binding?.edtPassword?.error = confirmPasswordError?.let { getString(it) }
-        binding?.edtPasswordConfirm?.error = confirmPasswordError?.let { getString(it) }
     }
 
     private val watcher = TxtWatcher {

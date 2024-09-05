@@ -2,13 +2,13 @@ package com.example.instaapp.register.presentation
 
 import android.util.Patterns
 import com.example.instaapp.R
-import com.example.instaapp.register.data.email.RegisterEmailCallBack
-import com.example.instaapp.register.data.email.RegisterEmailRepository
+import com.example.instaapp.register.data.RegisterCallBack
+import com.example.instaapp.register.data.RegisterRepository
 import com.example.instaapp.register.view.email.RegisterEmail
 
 class RegisterEmailPresenter(
     private var view: RegisterEmail.View?,
-    private val repository: RegisterEmailRepository
+    private val repository: RegisterRepository
 ): RegisterEmail.Presenter {
     override fun create(email: String) {
         val isEmailValid = Patterns.EMAIL_ADDRESS.matcher(email).matches()
@@ -21,7 +21,7 @@ class RegisterEmailPresenter(
 
         if (isEmailValid) {
             view?.showProgress(true)
-            repository.create(email, object : RegisterEmailCallBack {
+            repository.create(email, object : RegisterCallBack {
 
                 override fun onSucess() {
                     view?.goToNameAndPasswordScreen(email)

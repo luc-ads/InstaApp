@@ -1,22 +1,42 @@
 package com.example.instaapp.register.presentation
 
-import com.example.instaapp.register.data.nameAndPassword.RegisterNameAndPasswordCallBack
-import com.example.instaapp.register.data.nameAndPassword.RegisterNameAndPasswordRepository
+import com.example.instaapp.R
+import com.example.instaapp.register.data.RegisterCallBack
+import com.example.instaapp.register.data.RegisterRepository
 import com.example.instaapp.register.view.nameAndPassword.RegisterNameAndPassword
 
 class RegisterNameAndPasswordPresenter(
     private var view: RegisterNameAndPassword.View?,
-    private val repository: RegisterNameAndPasswordRepository
+    private val repository: RegisterRepository
 ): RegisterNameAndPassword.Presenter {
 
     override fun create(email: String, name: String, password: String, confirm: String) {
 
-        var isNameAndPassword = true
+        val isNameValid = name.length > 3
+        val isPasswordValid = password.length >= 8
+        val isConfirmValid = password == confirm
 
-        if (isNameAndPassword) {
+        if (!isNameValid) {
+            view?.displayNameFailure(R.string.invalidName)
+        } else {
+            view?.displayNameFailure(null)
+        }
+
+        if (!isConfirmValid) {
+            view?.displayPasswordFailure(R.string.password_not_equal)
+        } else {
+            if (!isPasswordValid) {
+                view?.displayPasswordFailure(R.string.invalid_password)
+            } else {
+                view?.displayPasswordFailure(null)
+            }
+        }
+
+        if (isNameValid && isPasswordValid && isConfirmValid) {
+
             view?.showProgress(true)
 
-            repository.create(name, password, object : RegisterNameAndPasswordCallBack {
+            repository.create(email, name, password, object : RegisterCallBack {
                 override fun onSucess() {
                     view?.onCreateSuccess(name)
                 }
@@ -29,9 +49,24 @@ class RegisterNameAndPasswordPresenter(
                     view?.showProgress(false)
                 }
             })
-        } else {
-
         }
+//
+//            repository.create(name, password, object : RegisterNameAndPasswordCallBack {
+//                override fun onSucess() {
+//                    view?.onCreateSuccess(name)
+//                }
+//
+//                override fun onFailure(message: String) {
+//                    view?.onCreateFailure(message)
+//                }
+//
+//                override fun onComplete() {
+//                    view?.showProgress(false)
+//                }
+//            })
+//        } else {
+//
+//        }
     }
 
     override fun onDestroy() {
