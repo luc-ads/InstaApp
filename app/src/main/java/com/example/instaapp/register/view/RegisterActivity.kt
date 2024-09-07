@@ -1,8 +1,10 @@
 package com.example.instaapp.register.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.instaapp.MainActivity
 import com.example.instaapp.R
 import com.example.instaapp.databinding.ActivityRegisterBinding
 import com.example.instaapp.register.view.RegisterWelcomeFragment.Companion.KEY_NAME
@@ -47,6 +49,12 @@ class RegisterActivity : AppCompatActivity(), FragmentAttachListener {
 
     override fun goToScreenPhoto() {
         replaceFragment(RegisterAddPhotosFragment())
+    }
+
+    override fun goToMainScreen() {
+        startActivity(Intent(this, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        })
     }
 
     private fun replaceFragment(fragment: Fragment) {

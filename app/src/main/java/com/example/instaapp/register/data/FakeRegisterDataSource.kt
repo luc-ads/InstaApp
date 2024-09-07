@@ -1,7 +1,6 @@
 package com.example.instaapp.register.data
 
 import android.os.Looper
-import android.provider.ContactsContract.Data
 import com.example.instaapp.commom.model.Database
 import com.example.instaapp.commom.model.UserAuth
 import java.util.UUID
@@ -36,16 +35,19 @@ class FakeRegisterDataSource : RegisterDataSource {
                 callBack.onFailure("Usuário já cadastrado!")
             } else {
 
+                val newUser = UserAuth(
+                    UUID.randomUUID().toString(),
+                    name,
+                    email,
+                    password
+                )
+
                 val created = Database.usersAuth.add(
-                    UserAuth(
-                        UUID.randomUUID().toString(),
-                        name,
-                        email,
-                        password
-                    )
+                    newUser
                 )
 
                 if (created) {
+                    Database.sessionAuth = newUser
                     callBack.onSucess()
                 } else {
                     callBack.onFailure("Erro interno no servidor.")
