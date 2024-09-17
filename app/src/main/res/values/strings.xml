@@ -44,4 +44,6 @@
     <string name="logout_action">Sair</string>
     <string name="cancel">Cancel</string>
     <string name="invalidName">Nome incorreto!</string>
+    <string name="btn_text_cancel">Cancelar</string>
+    <string name="btn_text_save">Salvar</string>
 </resources>

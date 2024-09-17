@@ -24,6 +24,7 @@
         app:hintEnabled="false"
         style="@style/Base.Theme.InstaApp.FormEditTextInput"
         app:layout_constraintTop_toBottomOf="@id/img_logo"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -56,7 +57,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.example.instaapp.LoadingButton
+    <com.example.instaapp.commom.view.LoadingButton
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

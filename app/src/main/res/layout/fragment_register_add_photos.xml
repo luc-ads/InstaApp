@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_title_add_photo"/>
 
-    <com.example.instaapp.LoadingButton
+    <com.example.instaapp.commom.view.LoadingButton
         android:id="@+id/btn_next_step"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,15 +56,15 @@
 
     <TextView
         android:id="@+id/link_jump"
+        style="@style/Base.Theme.InstaApp.SubTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
-        style="@style/Base.Theme.InstaApp.SubTitle"
-        android:text="@string/jump"
         android:gravity="center_horizontal"
-        android:textColor="@color/blue_enabled"
-        app:layout_constraintTop_toBottomOf="@id/btn_next_step"
+        android:text="@string/jump"
+        android:textColor="#1976D2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/btn_next_step" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

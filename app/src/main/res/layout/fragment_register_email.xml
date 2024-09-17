@@ -37,7 +37,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.example.instaapp.LoadingButton
+    <com.example.instaapp.commom.view.LoadingButton
         android:id="@+id/btn_next_step"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

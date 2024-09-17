@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <com.example.instaapp.LoadingButton
+    <com.example.instaapp.commom.view.LoadingButton
         android:id="@+id/btn_finish_welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

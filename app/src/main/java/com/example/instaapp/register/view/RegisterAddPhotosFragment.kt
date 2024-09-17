@@ -13,7 +13,7 @@ import com.example.instaapp.databinding.FragmentRegisterAddPhotosBinding
 import com.example.instaapp.databinding.FragmentRegisterWelcomeBinding
 
 
-class RegisterAddPhotosFragment: Fragment() {
+class RegisterAddPhotosFragment: Fragment(R.layout.fragment_register_add_photos) {
 
     private var binding: FragmentRegisterAddPhotosBinding? = null
     private var fragmentAttachListener: FragmentAttachListener? = null
@@ -32,19 +32,7 @@ class RegisterAddPhotosFragment: Fragment() {
 
                 btnNextStep.isEnabled = true
                 btnNextStep.setOnClickListener {
-                    val customDialog = CustomDialog(requireContext())
-                    customDialog.addButton(R.string.photo, R.string.gallery, R.string.app_name) {
-                        when (it.id) {
-                            R.string.photo -> {
-                                val intent = Intent("android.media.action.IMAGE_CAPTURE")
-                                startActivity(intent)
-                            }
-                            R.string.gallery -> {
-
-                            }
-                        }
-                    }
-                    customDialog.show()
+                    openDialog()
                 }
             }
         }
@@ -55,5 +43,21 @@ class RegisterAddPhotosFragment: Fragment() {
         if (context is FragmentAttachListener) {
             fragmentAttachListener = context
         }
+    }
+
+    private fun openDialog() {
+        val customDialog = CustomDialog(requireContext())
+        customDialog.addButton(R.string.photo, R.string.gallery, R.string.app_name) {
+            when (it.id) {
+                R.string.photo -> {
+                    val intent = Intent("android.media.action.IMAGE_CAPTURE")
+                    startActivity(intent)
+                }
+                R.string.gallery -> {
+                    fragmentAttachListener?.goToGalleryScreen()
+                }
+            }
+        }
+        customDialog.show()
     }
 }
