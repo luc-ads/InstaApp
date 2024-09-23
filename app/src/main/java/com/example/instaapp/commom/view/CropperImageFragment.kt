@@ -1,8 +1,10 @@
 package com.example.instaapp.commom.view
 
 import android.net.Uri
+import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import android.os.Environment
+import android.os.Parcelable
 import android.util.Log
 import android.view.View
 import androidx.core.os.bundleOf
@@ -21,7 +23,7 @@ class CropperImageFragment: Fragment(R.layout.fragment_image_cropper) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentImageCropperBinding.bind(view)
 
-        val uri = arguments?.getParcelable<Uri>(KEY_URI)
+        val uri = arguments?.parcelable<Uri>(KEY_URI)
 
         binding?.let {
             with(it) {
@@ -56,6 +58,11 @@ class CropperImageFragment: Fragment(R.layout.fragment_image_cropper) {
                 }
             }
         }
+    }
+
+    inline fun <reified T : Parcelable> Bundle.parcelable(key: String): T? = when {
+        SDK_INT >= 33 -> getParcelable(key, T::class.java)
+        else -> @Suppress("DEPRECATION") getParcelable(key) as? T
     }
 
     override fun onDestroy() {
