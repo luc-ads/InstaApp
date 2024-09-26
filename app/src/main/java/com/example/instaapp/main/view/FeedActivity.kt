@@ -1,8 +1,7 @@
-package com.example.instaapp.main
+package com.example.instaapp.main.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.instaapp.R
 import com.example.instaapp.databinding.ActivityFeedBinding
 
 class FeedActivity : AppCompatActivity() {

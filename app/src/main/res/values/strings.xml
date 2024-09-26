@@ -46,4 +46,5 @@
     <string name="invalidName">Nome incorreto!</string>
     <string name="btn_text_cancel">Cancelar</string>
     <string name="btn_text_save">Salvar</string>
+    <string name="instagram_logo_in_splash_screen">Instagram Logo in Splash Screen</string>
 </resources>
