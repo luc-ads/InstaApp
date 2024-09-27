@@ -9,9 +9,9 @@ import android.provider.MediaStore
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
-import androidx.fragment.app.Fragment
 import com.example.instaapp.MainActivity
 import com.example.instaapp.R
+import com.example.instaapp.commom.util.replaceFragment
 import com.example.instaapp.commom.view.CropperImageFragment
 import com.example.instaapp.commom.view.CropperImageFragment.Companion.KEY_URI
 import com.example.instaapp.databinding.ActivityRegisterBinding
@@ -37,7 +37,7 @@ class RegisterActivity : AppCompatActivity(), FragmentAttachListener {
         setContentView(binding.root)
 
         val fragment = RegisterEmailFragment()
-        replaceFragment(fragment)
+        replaceFragment(R.id.register_fragment, fragment)
     }
 
     override fun goToNameAndPasswordScreen(email: String) {
@@ -48,7 +48,7 @@ class RegisterActivity : AppCompatActivity(), FragmentAttachListener {
             arguments = bundle
         }
 
-        replaceFragment(fragment)
+        replaceFragment(R.id.register_fragment, fragment)
     }
 
     override fun goToWelcomeScreen(name: String) {
@@ -59,11 +59,11 @@ class RegisterActivity : AppCompatActivity(), FragmentAttachListener {
             arguments = bundle
         }
 
-        replaceFragment(fragment)
+        replaceFragment(R.id.register_fragment, fragment)
     }
 
     override fun goToScreenPhoto() {
-        replaceFragment(RegisterAddPhotosFragment())
+        replaceFragment(R.id.register_fragment, RegisterAddPhotosFragment())
     }
 
     override fun goToMainScreen() {
@@ -110,23 +110,7 @@ class RegisterActivity : AppCompatActivity(), FragmentAttachListener {
     }
 
     private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-
         uri?.let { openImageCropper(it) }
-    }
-
-    private fun replaceFragment(fragment: Fragment) {
-        if (supportFragmentManager.findFragmentById(R.id.register_fragment) == null) {
-            supportFragmentManager.beginTransaction().apply {
-                add(R.id.register_fragment, fragment)
-                commit()
-            }
-        } else {
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.register_fragment, fragment)
-                addToBackStack(null)
-                commit()
-            }
-        }
     }
 
     private fun openImageCropper(uri: Uri) {
@@ -136,6 +120,6 @@ class RegisterActivity : AppCompatActivity(), FragmentAttachListener {
             }
         }
 
-        replaceFragment(fragment)
+        replaceFragment(R.id.register_fragment, fragment)
     }
 }

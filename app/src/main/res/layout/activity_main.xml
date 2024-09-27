@@ -33,12 +33,11 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <fragment
-            android:id="@+id/fragment_profile"
+        <FrameLayout
+            android:id="@+id/main_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:name="com.example.instaapp.camera.CameraFragment"
             tools:layout="@layout/galeria_fragment"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

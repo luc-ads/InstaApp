@@ -12,16 +12,16 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instaapp.R
+import com.example.instaapp.databinding.CameraFragmentBinding
 import com.example.instaapp.databinding.ItemPostListBinding
 import com.example.instaapp.databinding.ItemProfileGridBinding
 
 class CameraFragment: Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.galeria_fragment, container, false)
-    }
 
+    private var binding: CameraFragmentBinding? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = CameraFragmentBinding.bind(view)
+    }
 }

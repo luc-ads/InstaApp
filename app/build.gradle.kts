@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.instaapp"
-        minSdk = 26
+        minSdk = 32
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
