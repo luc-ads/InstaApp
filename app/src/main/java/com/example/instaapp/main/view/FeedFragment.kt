@@ -11,9 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instaapp.R
+import com.example.instaapp.commom.model.Database
+import com.example.instaapp.commom.util.openCommentsModal
 import com.example.instaapp.databinding.ItemPostListBinding
+import com.example.instaapp.main.model.Posts
 
-class FeedFragment: Fragment() {
+class FeedFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,31 +42,48 @@ class FeedFragment: Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    private fun openModalComments() {
+        //requireActivity().openCommentsModal()
+        Log.i("Teste", "Teste")
+    }
+
     private fun configRv(view: View) {
         val rv = view.findViewById<RecyclerView>(R.id.feed_rv)
         rv.layoutManager = LinearLayoutManager(requireContext())
-        rv.adapter = PostAdapter()
+        rv.adapter =
+            PostAdapter(listPosts = Database.postsList, onClickComments = { openModalComments() })
     }
 
-
-    private class PostAdapter: RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+    private class PostAdapter(private val listPosts: List<Posts>, val onClickComments: () -> Unit) :
+        RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-            val binding = ItemPostListBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+            val binding =
+                ItemPostListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
             return PostViewHolder(binding)
         }
 
-        override fun getItemCount(): Int = 21
+        override fun getItemCount(): Int = listPosts.size
 
         override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-            holder.bind(R.drawable.ic_insta_add)
-            Log.i("onBindCall", "Passou pelo onBind")
+            holder.bind(
+                image = R.drawable.ic_insta_add,
+                lyricsPost = listPosts[position].title
+            ) { onClickComments }
         }
 
-        private class PostViewHolder(var itemBinding: ItemPostListBinding): RecyclerView.ViewHolder(itemBinding.root) {
-            fun bind(image: Int) {
-//                itemBinding.root.setImageResource(image)
+        private class PostViewHolder(private val itemBinding: ItemPostListBinding) :
+            RecyclerView.ViewHolder(itemBinding.root) {
+
+            val titlePost = itemBinding.homeTxtCaption
+            val iconComments = itemBinding.iconComments
+
+            fun bind(image: Int, lyricsPost: String, onClickComments: () -> Unit) {
+                titlePost.text = lyricsPost
+                iconComments.setOnClickListener {
+                    onClickComments.invoke()
+                }
             }
         }
     }

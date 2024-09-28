@@ -3,6 +3,8 @@ package com.example.instaapp
 import android.os.Bundle
 import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.instaapp.camera.CameraFragment
@@ -11,6 +13,8 @@ import com.example.instaapp.databinding.ActivityMainBinding
 import com.example.instaapp.main.view.FeedFragment
 import com.example.instaapp.profille.view.ProfileFragment
 import com.example.instaapp.search.SearchFragment
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.search.SearchView.Behavior
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,7 +47,23 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = ""
     }
 
+    private fun setEnabledToolbar(enabled: Boolean) {
+        val params = binding.mainToolbar.layoutParams as AppBarLayout.LayoutParams
+        val coordinatorParams = binding.mainAppbar.layoutParams as CoordinatorLayout.LayoutParams
+
+        if (enabled) {
+            params.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL or AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
+            coordinatorParams.behavior = Behavior()
+        } else {
+            params.scrollFlags = 0
+            coordinatorParams.behavior = null
+        }
+
+        binding.mainAppbar.layoutParams = coordinatorParams
+    }
+
     private fun initFragments() {
+        var enabledScrollToolBar = false
         homeFragment = FeedFragment()
         searchFragment = SearchFragment()
         cameraFragment = CameraFragment()
@@ -54,8 +74,12 @@ class MainActivity : AppCompatActivity() {
             add(R.id.main_fragment, homeFragment)
             commit()
         }
+        setEnabledToolbar(enabledScrollToolBar)
 
         binding.mainBottomNav.setOnItemSelectedListener { item ->
+
+            enabledScrollToolBar = false
+
             when (item.itemId) {
                 R.id.menu_bottom_home -> {
                     if (currentFragment == homeFragment) return@setOnItemSelectedListener false
@@ -72,8 +96,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.menu_bottom_profile -> {
                     if (currentFragment == profileFragment) return@setOnItemSelectedListener false
                     currentFragment = profileFragment
+                    enabledScrollToolBar = true
                 }
             }
+
+            setEnabledToolbar(enabledScrollToolBar)
 
             currentFragment?.let {
                 replaceFragment(id = R.id.main_fragment, it)

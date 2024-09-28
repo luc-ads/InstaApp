@@ -1,12 +1,14 @@
 package com.example.instaapp.commom.util
 
 import android.app.Activity
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.instaapp.R
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
 fun Activity.hideKeyboard() {
@@ -32,4 +34,8 @@ fun AppCompatActivity.replaceFragment(@IdRes id: Int, fragment: Fragment) {
         }
     }
     hideKeyboard()
+}
+
+fun Activity.openCommentsModal() {
+    Log.i("TesteModal", "TesteModal")
 }

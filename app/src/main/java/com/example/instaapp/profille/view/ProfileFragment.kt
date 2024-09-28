@@ -11,22 +11,18 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instaapp.R
+import com.example.instaapp.commom.base.BaseFragment
 import com.example.instaapp.databinding.ItemProfileGridBinding
+import com.example.instaapp.databinding.ProfileFragmentBinding
 
-class ProfileFragment: Fragment() {
+class ProfileFragment: BaseFragment<ProfileFragmentBinding, Profile.Presenter>(R.layout.profile_fragment,
+    ProfileFragmentBinding::bind) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.profile_fragment, container, false)
-    }
+    override lateinit var presenter: Profile.Presenter
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        configRv(view)
+    override fun setUpViews() {
+        binding?.profileRv?.layoutManager = GridLayoutManager(requireContext(), 3)
+        binding?.profileRv?.adapter = PostAdapter()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,12 +35,10 @@ class ProfileFragment: Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    private fun configRv(view: View) {
-        val rv = view.findViewById<RecyclerView>(R.id.profile_rv)
-        rv.layoutManager = GridLayoutManager(requireContext(), 3)
-        rv.adapter = PostAdapter()
+    override fun onDestroy() {
+        binding = null
+        super.onDestroy()
     }
-
 
     private class PostAdapter: RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 

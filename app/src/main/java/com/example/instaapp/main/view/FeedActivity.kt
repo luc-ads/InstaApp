@@ -11,7 +11,5 @@ class FeedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFeedBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
     }
 }

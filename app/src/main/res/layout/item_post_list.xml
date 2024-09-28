@@ -68,6 +68,7 @@
             android:src="@drawable/ic_insta_heart"/>
 
         <ImageView
+            android:id="@+id/icon_comments"
             style="@style/Base.Theme.InstaApp.Icon"
             android:src="@drawable/ic_insta_comment"/>
 
