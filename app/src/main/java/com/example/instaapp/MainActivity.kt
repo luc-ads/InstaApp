@@ -3,7 +3,6 @@ package com.example.instaapp
 import android.os.Bundle
 import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -11,7 +10,7 @@ import com.example.instaapp.camera.CameraFragment
 import com.example.instaapp.commom.util.replaceFragment
 import com.example.instaapp.databinding.ActivityMainBinding
 import com.example.instaapp.main.view.FeedFragment
-import com.example.instaapp.profille.view.ProfileFragment
+import com.example.instaapp.profile.view.ProfileFragment
 import com.example.instaapp.search.SearchFragment
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.search.SearchView.Behavior

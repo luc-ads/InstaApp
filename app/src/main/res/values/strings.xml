@@ -47,4 +47,6 @@
     <string name="btn_text_cancel">Cancelar</string>
     <string name="btn_text_save">Salvar</string>
     <string name="instagram_logo_in_splash_screen">Instagram Logo in Splash Screen</string>
+    <string name="empty_list">Nenhum registro encontrado</string>
+    <string name="user_not_found">Usuário não encontado</string>
 </resources>

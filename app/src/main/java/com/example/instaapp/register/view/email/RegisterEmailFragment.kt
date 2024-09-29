@@ -8,7 +8,7 @@ import com.example.instaapp.R
 import com.example.instaapp.commom.base.DependencyInjector
 import com.example.instaapp.commom.util.TxtWatcher
 import com.example.instaapp.databinding.FragmentRegisterEmailBinding
-import com.example.instaapp.register.presentation.RegisterEmailPresenter
+import com.example.instaapp.register.presenter.RegisterEmailPresenter
 import com.example.instaapp.register.view.FragmentAttachListener
 
 class RegisterEmailFragment: Fragment(R.layout.fragment_register_email), RegisterEmail.View {

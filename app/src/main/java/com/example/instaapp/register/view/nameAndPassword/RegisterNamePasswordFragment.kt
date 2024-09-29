@@ -9,7 +9,7 @@ import com.example.instaapp.R
 import com.example.instaapp.commom.base.DependencyInjector
 import com.example.instaapp.commom.util.TxtWatcher
 import com.example.instaapp.databinding.FragmentRegisterNamePasswordBinding
-import com.example.instaapp.register.presentation.RegisterNameAndPasswordPresenter
+import com.example.instaapp.register.presenter.RegisterNameAndPasswordPresenter
 import com.example.instaapp.register.view.FragmentAttachListener
 
 class RegisterNamePasswordFragment: Fragment(R.layout.fragment_register_name_password), RegisterNameAndPassword.View {

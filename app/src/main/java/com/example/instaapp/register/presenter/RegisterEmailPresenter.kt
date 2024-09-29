@@ -1,4 +1,4 @@
-package com.example.instaapp.register.presentation
+package com.example.instaapp.register.presenter
 
 import android.util.Patterns
 import com.example.instaapp.R

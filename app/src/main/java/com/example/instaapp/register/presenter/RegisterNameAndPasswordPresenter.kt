@@ -1,4 +1,4 @@
-package com.example.instaapp.register.presentation
+package com.example.instaapp.register.presenter
 
 import com.example.instaapp.R
 import com.example.instaapp.register.data.RegisterCallBack
